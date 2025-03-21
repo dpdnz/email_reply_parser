@@ -83,14 +83,21 @@ class EmailReplyParser
 
       # Check for multi-line reply headers. If found, remove new line from the reply header.
       reply_header_patterns = {
-        en: /^(?!On.*On\s.+?wrote:)(On\s(.+?)wrote:)$/m, # US/UK
+        en: /^(?!On.*On\s.+?wrote:)(On\s(.+?)wrote:)$/m,
+        en_multi: /^(?!On.*On\s.+?wrote:)?(On (\d{1,2}|\w{1,3},)(.+?)wrote:)$/m,
         es: /^(?!El.*El\s.+?escribió:)(El\s(.+?)escribió:)$/m, # ES/LA
+        es_multi: /^(?!El.*El\s.+?escribió:)?(El (\d{1,2}|\w{1,3},)(.+?)escribió:)$/m,
         fr: /^(?!Le.*Le\s.+?a écrit :)(Le\s(.+?)a écrit :)$/m, # FR/CA
+        fr_multi: /^(?!Le.*Le\s.+?a écrit :)?(Le (\d{1,2}|\w{1,3}\.)(.+?)a écrit :)$/m,
         it: /^(?!Il.*Il\s.+?ha scritto:)(Il\s(.+?)ha scritto:)$/m,
+        it_multi: /^(?!Il.*Il\s.+?ha scritto:)?(Il giorno(.+?)ha scritto:)$/m,
         pt_br: /^(?!Em.*Em\s.+?escreveu:)(Em\s(.+?)escreveu:)$/m,
+        pt_br_multi: /^(?!Em.*Em\s.+?escreveu:)?(Em (\d{1,2}|\w{1,3}\.,)(.+?)escreveu:)$/m,
         pt_pt: /^(\R.*escreveu\s*\([^,]+,\s*(?:\d{2}\/\d{2}\/\d{4}|\s*\n\s*\d{2}\/\d{2}\/\d{4})\s*à\(s\)\s*\d{2}:\d{2}\):)$/m,
         de: /^(?!Am .*\.,.*Am .*\.,\s.+?schrieb.*:)(Am .*\.,\s.+?schrieb.*:)$/m, # NL/DE
+        de_multi: /^(?!Am .*\.,.*Am .*\.,\s.+?schrieb.*:)?(Am .*\.,\s.+?schrieb.*:)$/m,
         af: /^(?!Op.*Op\s.+?geskryf:)(Op\s(.+?)geskryf:)$/m,
+        af_multi: /^(?!Op.*Op\s.+?geskryf:)?(Op (\w{1,2}\. \d{1,2})(.+?)geskryf:)$/m,
         jp: /^(?!\d{4}[一-龯]\d{1,2}[一-龯]\d{1,2}[一-龯]\([一-龯]\):)(\d{4}[一-龯]\d{1,2}[一-龯]\d{1,2}[一-龯]\([一-龯]\)\s+\d{1,2}:\d{1,2}.*:)$/m,
         ko: /^(?!\d{4}[\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]\d{1,2}[\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]\d{1,2}[\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]\([\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]\):)(\d{4}[\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]\s+\d{1,2}[\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]\s+\d{1,2}[\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]\s+\([\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]\)\s+[\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]+\s+\d{1,2}:\d{1,2},.*[\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]:)$/m
       }
@@ -198,24 +205,26 @@ class EmailReplyParser
     def quote_header?(line)
       # EN-US / EN-UK - On wrote: || Subject|To|Sent|From
       line =~ /^:etorw.*nO$/ || line =~ /^.*:(morF|tneS|oT|tcejbuS)$/ ||
-      # ES-ES - El escribió:
-      line =~/^:óibircse.*lE$/ ||
-      # FR-FR - Le écrit :
-      line =~ /^: tircé.*eL$/ ||
-      # IT-IT - Il ha scritto:
-      line =~ /^:ottircs ah.*lI$/ ||
-      # PT-BR - Em HH:MM, escreveu:
-      line =~ /^:uevercse.*,\d{2}:\d{2}\s+,\d{4}.*mE$/ ||
-      # PT-PT - (:)}2{d:}2{d+ )s(à*.uevercse *.)^
-      line =~ /^(:\)\d{2}:\d{2}\s+\)s\(à\s+\d{4}\/\d{2}\/\d{2}\s+,.*\(\s+uevercse\s+)/ ||
-      # NL-NL / DE-DE - Am ., HH:MM Uhr schrieb:
-      line =~ /^:.*beirhcs rhU \d{2}:\d{2}.*mA$/ ||
-      # AF-AF - Op geskryf:
-      line =~ /^:fyrkseg.*\..*pO$/ ||
-      # JP-JP - YYYY[]MM[]DD[]([]) HH:MM :
-      line =~ /^:.*\d{2}:\d{2}.*\)[一-龯]\([一-龯]\d{2}[一-龯]\d{1,2}[一-龯]\d{4}$/ ||
-      # KO-KO - :[], HH:MM[]YYYY
-      line =~ /^:[\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]+ [\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]+.*,\d{1,2}:\d{1,2} [\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]+.*\d{4}$/
+        # ES-ES - El escribió:
+        line =~ /^:óibircse.*lE$/ ||
+        # FR-FR - Le écrit :
+        line =~ /^: tircé.*eL$/ ||
+        # IT-IT - Il ha scritto:
+        line =~ /^:ottircs ah.*lI$/ ||
+        # PT-BR - Em YYYYY, HH:MM, escreveu:
+        line =~ /^:uevercse.*,\d{2}:\d{2}\s+,\d{4}.*mE$/ ||
+        # PT-BR - (alt) Em YYYY às HH:MM, escreveu:
+        line =~ /^:uevercse.*\d{2}:\d{2}\s+?sà\s?\d{4}.*mE$/ ||
+        # PT-PT - (:)}2{d:}2{d+ )s(à*.uevercse *.)^
+        line =~ /^(:\)\d{2}:\d{2}\s+\)s\(à\s+\d{4}\/\d{2}\/\d{2}\s+,.*\(\s+uevercse\s+)/ ||
+        # NL-NL / DE-DE - Am ., HH:MM Uhr schrieb:
+        line =~ /^:.*beirhcs rhU \d{2}:\d{2}.*mA$/ ||
+        # AF-AF - Op geskryf:
+        line =~ /^:fyrkseg.*\..*pO$/ ||
+        # JP-JP - YYYY[]MM[]DD[]([]) HH:MM :
+        line =~ /^:.*\d{2}:\d{2}.*\)[一-龯]\([一-龯]\d{2}[一-龯]\d{1,2}[一-龯]\d{4}$/ ||
+        # KO-KO - :[], HH:MM[]YYYY
+        line =~ /^:[\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]+ [\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]+.*,\d{1,2}:\d{1,2} [\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]+.*\d{4}$/
     end
 
     # Builds the fragment string and reverses it, after all lines have been

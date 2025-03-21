@@ -1,0 +1,38 @@
+Reply AF-AF
+
+Op Ma. 10 Feb. 2025 om 17:11 het David Middle
+Surname <david@myowndomain.com> geskryf:
+
+> double reply breaks the parsing tho
+>
+> Op Ma. 10 Feb. 2025 om 17:11 het David Middle
+> Surname <david@myowndomain.com> geskryf:
+>
+>> indeed!
+>>
+>> Op Ma. 10 Feb. 2025 om 17:11 het David Middle
+>> Surname <david@myowndomain.com> geskryf:
+>>
+>>>
+>>> noice
+>>>
+>>> —
+>>> OK cool
+>>>
+>>>
+>>
+>> --
+>>
+>> David Someone
+>>
+>
+>
+> --
+>
+> David Someone
+>
+
+
+--
+
+David Someone

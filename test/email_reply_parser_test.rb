@@ -229,82 +229,154 @@ I am currently using the Java HTTP API.\n", reply.fragments[0].to_s
     assert_equal 5, reply.fragments.size
   end
 
-  def test_i18n_en_uk
-    reply = email(:email_3_en_uk)
+  def test_i18n_multiple_replies
+    reply = email(:email_3_en_en)
 
-    assert_equal("Reply EN-UK", reply.fragments[0].to_s)
+    assert_equal('This is a reply', reply.fragments[0].to_s)
+  end
+
+  def test_i18n_en_en_multi
+    reply = email(:email_3_en_en_multi)
+
+    assert_equal('This is a reply', reply.fragments[0].to_s)
   end
 
   def test_i18n_es_es
     reply = email(:email_3_es_es)
 
-    assert_equal("Reply ES-ES", reply.fragments[0].to_s)
+    assert_equal('Reply ES-ES', reply.fragments[0].to_s)
+  end
+
+  def test_i18n_es_es_multi
+    reply = email(:email_3_es_es_multi)
+
+    assert_equal('Reply ES-ES', reply.fragments[0].to_s)
   end
 
   def test_i18n_es_la
     reply = email(:email_3_es_la)
 
-    assert_equal("Reply ES-LA", reply.fragments[0].to_s)
+    assert_equal('Reply ES-LA', reply.fragments[0].to_s)
   end
 
   def test_i18n_fr_fr
     reply = email(:email_3_fr_fr)
 
-    assert_equal("Reply FR-FR", reply.fragments[0].to_s)
+    assert_equal('Reply FR-FR', reply.fragments[0].to_s)
+  end
+
+  def test_i18n_fr_fr_multi
+    reply = email(:email_3_fr_fr_multi)
+
+    assert_equal('Reply FR-FR', reply.fragments[0].to_s)
   end
 
   def test_i18n_fr_ca
     reply = email(:email_3_fr_ca)
 
-    assert_equal("Reply FR-CA", reply.fragments[0].to_s)
+    assert_equal('Reply FR-CA', reply.fragments[0].to_s)
   end
 
   def test_i18n_it_it
     reply = email(:email_3_it_it)
 
-    assert_equal("Reply IT-IT", reply.fragments[0].to_s)
+    assert_equal('Reply IT-IT', reply.fragments[0].to_s)
+  end
+
+  def test_i18n_it_it_multi
+    reply = email(:email_3_it_it_multi)
+
+    assert_equal('Reply IT-IT', reply.fragments[0].to_s)
   end
 
   def test_i18n_pt_br
     reply = email(:email_3_pt_br)
 
-    assert_equal("Reply PT-BR", reply.fragments[0].to_s)
+    assert_equal('Reply PT-BR', reply.fragments[0].to_s)
+  end
+
+  def test_i18n_pt_br_alt
+    reply = email(:email_3_pt_br_alt)
+
+    assert_equal('Reply PT-BR', reply.fragments[0].to_s)
+  end
+
+  def test_i18n_pt_br_multi
+    reply = email(:email_3_pt_br_multi)
+
+    assert_equal('Reply PT-BR', reply.fragments[0].to_s)
   end
 
   def test_i18n_pt_pt
     reply = email(:email_3_pt_pt)
 
-    assert_equal("Reply PT-PT", reply.fragments[0].to_s)
+    assert_equal('Reply PT-PT', reply.fragments[0].to_s)
+  end
+
+  def test_i18n_pt_pt_multi
+    reply = email(:email_3_pt_pt_multi)
+
+    assert_equal('Reply PT-PT', reply.fragments[0].to_s)
   end
 
   def test_i18n_nl_nl
     reply = email(:email_3_nl_nl)
 
-    assert_equal("Reply NL-NL", reply.fragments[0].to_s)
+    assert_equal('Reply NL-NL', reply.fragments[0].to_s)
+  end
+
+  def test_i18n_nl_nl_multi
+    reply = email(:email_3_nl_nl_multi)
+
+    assert_equal('Reply NL-NL', reply.fragments[0].to_s)
   end
 
   def test_i18n_de_de
     reply = email(:email_3_de_de)
 
-    assert_equal("Reply DE-DE", reply.fragments[0].to_s)
+    assert_equal('Reply DE-DE', reply.fragments[0].to_s)
+  end
+
+  def test_i18n_de_de_multi
+    reply = email(:email_3_de_de_multi)
+
+    assert_equal('Reply DE-DE', reply.fragments[0].to_s)
   end
 
   def test_i18n_af_af
     reply = email(:email_3_af_af)
 
-    assert_equal("Reply AF-AF", reply.fragments[0].to_s)
+    assert_equal('Reply AF-AF', reply.fragments[0].to_s)
+  end
+
+  def test_i18n_af_af_multi
+    reply = email(:email_3_af_af_multi)
+
+    assert_equal('Reply AF-AF', reply.fragments[0].to_s)
   end
 
   def test_i18n_jp_jp
     reply = email(:email_3_jp_jp)
 
-    assert_equal("Reply JP-JP", reply.fragments[0].to_s)
+    assert_equal('Reply JP-JP', reply.fragments[0].to_s)
+  end
+
+  def test_i18n_jp_jp_multi
+    reply = email(:email_3_jp_jp_multi)
+
+    assert_equal('Reply JP-JP', reply.fragments[0].to_s)
   end
 
   def test_i18n_ko_ko
     reply = email(:email_3_ko_ko)
 
-    assert_equal("Reply KO-KO", reply.fragments[0].to_s)
+    assert_equal('Reply KO-KO', reply.fragments[0].to_s)
+  end
+
+  def test_i18n_ko_ko_multi
+    reply = email(:email_3_ko_ko_multi)
+
+    assert_equal('Reply KO-KO', reply.fragments[0].to_s)
   end
 
   def email(name)
