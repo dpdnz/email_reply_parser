@@ -1,0 +1,38 @@
+This is a reply
+
+On Mon, 10 Feb 2025 at 17:11, David Middle
+Surname <david@myowndomain.com> wrote:
+
+> double reply breaks the parsing tho
+>
+> On Fri, Mar 14, 2025 at 12:20 PM David Someone <
+> david@somewhere.com> wrote:
+>
+>> indeed!
+>>
+>> On Fri, Mar 14, 2025 at 12:19 PM Some Name <
+>> no-reply@another-domain> wrote:
+>>
+>>>
+>>> noice
+>>>
+>>> —
+>>> OK cool
+>>>
+>>>
+>>
+>> --
+>>
+>> David Someone
+>>
+>
+>
+> --
+>
+> David Someone
+>
+
+
+--
+
+David Someone

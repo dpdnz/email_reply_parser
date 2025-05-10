@@ -1,0 +1,38 @@
+Reply JP-JP
+
+2025年2月10日(月) 17:11 David Middle
+Surname <david@myowndomain.com>:
+
+> double reply breaks the parsing tho
+>
+> 2025年2月09日(月) 17:01 David Middle
+> Surname <david@myowndomain.com>:
+>
+>> indeed!
+>>
+>> 2025年2月08日(月) 17:12 David Middle
+>> Surname <david@myowndomain.com>:
+>>
+>>>
+>>> noice
+>>>
+>>> —
+>>> OK cool
+>>>
+>>>
+>>
+>> --
+>>
+>> David Someone
+>>
+>
+>
+> --
+>
+> David Someone
+>
+
+
+--
+
+David Someone

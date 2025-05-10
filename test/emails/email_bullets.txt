@@ -9,7 +9,8 @@ and retain this formatting
    - and another
 
 
-On Fri, Feb 24, 2012 at 10:19 AM, <examples@email.goalengine.com> wrote:
+On Fri, Feb 24, 2012 at 10:19 AM, Example User <
+examples@email.goalengine.com> wrote:
 
 > Give us an example of how you applied what they learned to achieve
 > something in your organization
@@ -17,6 +18,6 @@ On Fri, Feb 24, 2012 at 10:19 AM, <examples@email.goalengine.com> wrote:
 
 
 
--- 
+--
 
 *Joe Smith | Director, Product Management*

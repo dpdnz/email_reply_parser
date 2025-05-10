@@ -1,0 +1,38 @@
+Reply PT-PT
+
+David Middle Surname <david@myowndomain.com> escreveu
+(segunda, 10/02/2025 à(s) 17:11):
+
+> double reply breaks the parsing tho
+>
+> David Middle Surname <david@myowndomain.com> escreveu
+> (domingo, 09/02/2025 à(s) 17:11):
+>
+>> indeed!
+>>
+>> David Middle Surname <david@myowndomain.com> escreveu
+>> (sábado, 08/02/2025 à(s) 17:11):
+>>
+>>>
+>>> noice
+>>>
+>>> —
+>>> OK cool
+>>>
+>>>
+>>
+>> --
+>>
+>> David Someone
+>>
+>
+>
+> --
+>
+> David Someone
+>
+
+
+--
+
+David Someone
